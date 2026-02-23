@@ -4,9 +4,9 @@ import { Terminal, LayoutDashboard, Lock, Mail } from "lucide-react";
 const features = [
   {
     icon: Terminal,
-    title: "Run code agents, with flows built in.",
+    title: "Run agents, with flows built in.",
     description:
-      "Spin up opinionated flows for monitoring, deployments, migrations, and refactors – directly in your browser.",
+      "Spin up ready-made workflows for coding, researching, or just organizing your day – directly in your browser.",
     className: "md:col-span-2 border-white/10",
   },
   {

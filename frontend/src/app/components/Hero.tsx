@@ -4,6 +4,7 @@ import React, { Suspense, useEffect, useState } from "react";
 
 // Directly import the 3D component
 import Hero3D from "./Hero3D";
+import { Link } from "react-router";
 
 export function Hero() {
 
@@ -24,17 +25,17 @@ export function Hero() {
             </h1>
 
             <p className="text-xl sm:text-2xl text-muted-foreground mb-12 max-w-lg font-light">
-              For developers who ship at 10x speed.
+              For developers who ship fast, and people who want to automate their day.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <button className="group px-8 py-4 bg-black text-white rounded-full hover:bg-black/80 transition-all flex items-center justify-center gap-2">
-                Launch in browser
+            <div className="flex flex-col sm:flex-row gap-4 mb-6 relative z-20">
+              <Link
+                to="/waitlist"
+                className="group px-8 py-4 bg-black text-white rounded-full hover:bg-black/80 transition-all flex items-center justify-center gap-2 font-medium"
+              >
+                Join Waitlist
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="px-8 py-4 border-2 border-black text-black rounded-full hover:bg-black/5 transition-all">
-                Get early access
-              </button>
+              </Link>
             </div>
 
             <p className="text-sm text-muted-foreground font-light">

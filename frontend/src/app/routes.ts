@@ -3,6 +3,7 @@ import { Root } from "./components/Root";
 import { Landing } from "./components/Landing";
 import { Signup } from "./components/Signup";
 import { Login } from "./components/Login";
+import { Waitlist } from "./components/Waitlist";
 
 export const router = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ export const router = createBrowserRouter([
       { index: true, Component: Landing },
       { path: "signup", Component: Signup },
       { path: "login", Component: Login },
+      { path: "waitlist", Component: Waitlist },
     ],
   },
 ]);

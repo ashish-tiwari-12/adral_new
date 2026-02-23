@@ -18,10 +18,10 @@ export function MeetAdral() {
 
         <div className="max-w-3xl mx-auto space-y-6 text-lg sm:text-xl text-slate-800 leading-relaxed mb-16 font-light">
           <p>
-            Let AI agents learn how you build, instead of you learning how they work.
+            Let AI agents learn how you work—whether you are writing code or just clearing your inbox.
           </p>
           <p className="text-slate-500">
-            Your workflows, your stack, your tools – all orchestrated from one place.
+            Your daily tasks, your favorite apps, your tools – all orchestrated from one place.
           </p>
         </div>
 

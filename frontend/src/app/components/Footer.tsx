@@ -11,7 +11,7 @@ export function Footer() {
             <div className="mb-6">
               <h3 className="text-2xl mb-3 font-serif text-foreground tracking-tight">Adral</h3>
               <p className="text-muted-foreground leading-relaxed font-light text-sm max-w-sm">
-                Building the agent‑native control room for developers.
+                Building the agent‑native control room for everyone.
               </p>
             </div>
           </div>
