@@ -57,9 +57,9 @@ export function AIWorkWithYou() {
           transition={{ duration: 0.7 }}
           className="text-center mb-32"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extralight tracking-tight mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif tracking-tight mb-6 leading-tight text-foreground">
             AI should work<br />
-            <span className="text-[#3b82f6]">with you.</span>
+            <span className="italic">with you.</span>
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground font-light">
             Not behind a black box — right in front of you.
@@ -70,7 +70,7 @@ export function AIWorkWithYou() {
           {/* Central subtle vertical timeline */}
           <div className="absolute left-[27px] md:left-1/2 top-0 bottom-0 w-px bg-gray-200 -translate-x-1/2 hidden sm:block">
             <motion.div
-              className="w-full bg-[#3b82f6]/40"
+              className="w-full bg-black/20"
               style={{ height: lineHeight }}
             />
           </div>
@@ -86,8 +86,7 @@ export function AIWorkWithYou() {
                 className={`relative flex flex-col md:flex-row gap-8 md:gap-16 items-start ${index % 2 === 0 ? "md:flex-row-reverse" : ""
                   }`}
               >
-                {/* Timeline dot */}
-                <div className="hidden sm:flex absolute left-[27px] md:left-1/2 top-10 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-[#3b82f6] bg-white shadow-sm z-20" />
+                <div className="hidden sm:flex absolute left-[27px] md:left-1/2 top-10 -translate-x-1/2 w-4 h-4 rounded-full border-2 border-black/20 bg-white shadow-sm z-20" />
 
                 {/* Spacer for alternating layout */}
                 <div className="hidden md:block flex-1" />
@@ -107,7 +106,7 @@ export function AIWorkWithYou() {
                         <ul className="space-y-3 my-8 pl-0">
                           {section.bullets.map((bullet, i) => (
                             <li key={i} className="flex items-start gap-3">
-                              <span className="text-[#3b82f6] mt-1.5 opacity-80">✦</span>
+                              <span className="text-foreground mt-1.5 opacity-60">✦</span>
                               <span className="text-foreground/90">{bullet}</span>
                             </li>
                           ))}

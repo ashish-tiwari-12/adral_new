@@ -43,7 +43,7 @@ export function AgentsForRealWork() {
           transition={{ duration: 0.7 }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl font-extralight tracking-tight mb-8">
+          <h2 className="text-4xl sm:text-5xl font-serif tracking-tight mb-8 text-foreground">
             Agents for real work.
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
@@ -65,8 +65,8 @@ export function AgentsForRealWork() {
                 className={`group relative p-10 rounded-[2rem] border border-black/5 bg-white shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500 overflow-hidden ${feature.className.replace('border-white/10', '')}`}
               >
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="w-14 h-14 rounded-2xl bg-blue-50/50 border border-blue-100 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 ease-out shadow-sm">
-                    <Icon className="w-7 h-7 text-blue-500" />
+                  <div className="w-14 h-14 rounded-2xl bg-transparent border border-black/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 ease-out shadow-sm">
+                    <Icon className="w-7 h-7 text-foreground" />
                   </div>
 
                   <h3 className="text-2xl mb-4 font-medium text-foreground tracking-tight">
