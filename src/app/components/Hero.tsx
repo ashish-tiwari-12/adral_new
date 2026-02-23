@@ -1,8 +1,22 @@
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
+import React, { Suspense, useEffect, useState } from "react";
 
+// Lazy load the 3D component to keep initial bundle small (LCP/FCP optimization)
+const Hero3D = React.lazy(() => import("./Hero3D"));
 
 export function Hero() {
+  const [load3D, setLoad3D] = useState(false);
+
+  useEffect(() => {
+    // Delay loading the 3D model slightly to prioritize FCP and LCP metrics
+    // The static image will show first, then the 3D canvas will load over it.
+    const timer = setTimeout(() => {
+      setLoad3D(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 py-20">
       <div className="relative max-w-7xl mx-auto">
@@ -43,15 +57,23 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center lg:justify-end relative mr-4 md:mr-0"
+            className="flex justify-center lg:justify-end relative mr-4 md:mr-0 min-h-[400px]"
           >
             {/* Simple Premium Visual */}
             <div className="relative w-full max-w-lg aspect-square group flex items-center justify-center">
+              {/* Fallback image preserves FCP and LCP */}
               <img
                 src="/hero_abstract.png"
                 alt="Adral AI Control Room"
-                className="w-full max-w-md h-auto object-contain drop-shadow-2xl mix-blend-multiply rounded-2xl"
+                className={`w-full max-w-md h-auto object-contain drop-shadow-2xl mix-blend-multiply rounded-2xl transition-opacity duration-1000 ${load3D ? 'opacity-0' : 'opacity-100'}`}
               />
+
+              {/* 3D Model loads asynchronously */}
+              {load3D && (
+                <Suspense fallback={null}>
+                  <Hero3D />
+                </Suspense>
+              )}
             </div>
           </motion.div>
         </div>
