@@ -9,10 +9,23 @@ This is a complete, professional MVC-based backend for the Adral Waitlist, using
 - `controllers/waitlistController.js`: Handles the business logic, validation, and sending HTTP responses.
 - `routes/waitlistRoutes.js`: Maps HTTP endpoints (e.g., `/join`) to their controller functions.
 
-## 1. Local Setup
-Before running the backend, you need a local MySQL database. If you use tools like XAMPP or MySQL Workbench:
-1. Create a database called `adral_waitlist`.
-2. Run this SQL command to create the table:
+## 1. Connecting to Hostinger MySQL Database
+
+Hostinger allows you to connect to your database from this Node.js App, but you MUST whitelist your IP address first.
+
+### Step 1: Create the Database on Hostinger
+1. Go to **Websites** -> Manage -> **Databases** -> **MySQL Databases**.
+2. Create: Database Name (`adral_waitlist`), Username (`adral_user`), Password (`YourStrongPass123!`).
+
+### Step 2: Whitelist your IP (IMPORTANT)
+By default, Hostinger blocks outside connections to the database.
+1. Go to **Databases** -> **Remote MySQL**.
+2. Set **IP Configuration** to **Any Host** (or just your server's specific IP if deploying).
+3. Select your `adral_waitlist` database and click **Create**.
+
+### Step 3: Create the Table
+1. Open **phpMyAdmin** in Hostinger.
+2. Go to the SQL tab and run:
    ```sql
    CREATE TABLE waitlist (
      id INT AUTO_INCREMENT PRIMARY KEY,
@@ -24,12 +37,19 @@ Before running the backend, you need a local MySQL database. If you use tools li
    ```
 
 ## 2. Environment Variables
-Update the `.env` file in this directory with your actual local database credentials (usually user `root` and an empty password in local environments).
+Update the `backend/.env` file with the details from Hostinger. The `DB_HOST` is usually NOT localhost anymore if you are running this app elsewhere—it will be a specific IP or Hostinger URL provided in the Remote MySQL page (e.g., `89.116.xxx.xxx` or `srv123.hostinger.com`).
+
+```env
+PORT=5000
+DB_HOST=your_hostinger_remote_mysql_ip
+DB_USER=your_hostinger_db_username
+DB_PASSWORD=your_hostinger_db_password
+DB_NAME=your_hostinger_db_name
+```
 
 ## 3. Running the Server
 Make sure you are in the `backend` folder in your terminal:
 ```bash
-cd backend
 npm install
 npm run dev
 ```

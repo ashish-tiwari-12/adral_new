@@ -83,7 +83,6 @@ export default function Hero3D() {
                 </PresentationControls>
 
                 <Environment preset="city" />
-                <ContactShadows position={[0, -2.5, 0]} opacity={0.4} scale={15} blur={2.5} far={4} />
             </Canvas>
         </motion.div>
     );
