@@ -52,7 +52,7 @@ export default function Hero3D() {
             initial={{ opacity: 0 }}
             animate={{ opacity: mounted ? 1 : 0 }}
             transition={{ duration: 1 }}
-            className="w-full h-[500px] absolute inset-0 z-10 flex items-center justify-center cursor-grab active:cursor-grabbing"
+            className="w-full h-[500px] absolute inset-0 z-10 flex items-center justify-center cursor-grab active:cursor-grabbing touch-none"
         >
             <Canvas
                 camera={{ position: [0, 0, 6], fov: 45 }}
@@ -74,6 +74,11 @@ export default function Hero3D() {
                     polar={[-Math.PI / 4, Math.PI / 4]}
                     azimuth={[-Math.PI / 4, Math.PI / 4]}
                 >
+                    {/* Invisible plane to catch all touch events on mobile */}
+                    <mesh position={[0, 0, -2]} scale={100}>
+                        <planeGeometry />
+                        <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+                    </mesh>
                     <AbstractGeometry />
                 </PresentationControls>
 

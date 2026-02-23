@@ -2,20 +2,10 @@ import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import React, { Suspense, useEffect, useState } from "react";
 
-// Lazy load the 3D component to keep initial bundle small (LCP/FCP optimization)
-const Hero3D = React.lazy(() => import("./Hero3D"));
+// Directly import the 3D component
+import Hero3D from "./Hero3D";
 
 export function Hero() {
-  const [load3D, setLoad3D] = useState(false);
-
-  useEffect(() => {
-    // Delay loading the 3D model slightly to prioritize FCP and LCP metrics
-    // The static image will show first, then the 3D canvas will load over it.
-    const timer = setTimeout(() => {
-      setLoad3D(true);
-    }, 1500);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 py-20">
@@ -61,19 +51,10 @@ export function Hero() {
           >
             {/* Simple Premium Visual */}
             <div className="relative w-full max-w-lg aspect-square group flex items-center justify-center">
-              {/* Fallback image preserves FCP and LCP */}
-              <img
-                src="/hero_abstract.png"
-                alt="Adral AI Control Room"
-                className={`w-full max-w-md h-auto object-contain drop-shadow-2xl mix-blend-multiply rounded-2xl transition-opacity duration-1000 ${load3D ? 'opacity-0' : 'opacity-100'}`}
-              />
-
-              {/* 3D Model loads asynchronously */}
-              {load3D && (
-                <Suspense fallback={null}>
-                  <Hero3D />
-                </Suspense>
-              )}
+              {/* 3D Model loads immediately */}
+              <div className="w-full max-w-md aspect-square relative transition-opacity duration-1000 opacity-100">
+                <Hero3D />
+              </div>
             </div>
           </motion.div>
         </div>
