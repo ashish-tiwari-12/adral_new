@@ -17,6 +17,13 @@ const Waitlist = {
         const sql = `SELECT * FROM waitlist WHERE email = ?`;
         const [rows] = await db.execute(sql, [email]);
         return rows[0]; // return the first result or undefined
+    },
+
+    // Get all waitlist entries for admin dashboard
+    findAll: async () => {
+        const sql = `SELECT * FROM waitlist ORDER BY created_at DESC`;
+        const [rows] = await db.execute(sql);
+        return rows;
     }
 };
 

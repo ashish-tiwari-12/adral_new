@@ -53,6 +53,37 @@ const joinWaitlist = async (req, res) => {
     }
 };
 
+const getWaitlist = async (req, res) => {
+    try {
+        const adminPassword = req.headers["x-admin-password"];
+        const expectedPassword = process.env.ADMIN_PASSWORD;
+
+        if (!expectedPassword) {
+            console.error("ADMIN_PASSWORD is not set in environment variables");
+            return res.status(500).json({ success: false, message: "Server misconfiguration" });
+        }
+
+        if (adminPassword !== expectedPassword) {
+            return res.status(401).json({ success: false, message: "Unauthorized" });
+        }
+
+        const entries = await Waitlist.findAll();
+
+        res.status(200).json({
+            success: true,
+            data: entries
+        });
+
+    } catch (error) {
+        console.error("Get Waitlist Error:", error);
+        res.status(500).json({
+            success: false,
+            message: "Server Error. Please try again later."
+        });
+    }
+};
+
 module.exports = {
-    joinWaitlist
+    joinWaitlist,
+    getWaitlist
 };
